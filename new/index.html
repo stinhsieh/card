@@ -45,7 +45,7 @@
      <div><label>個人 LINE ID <span class="opt">（可空）</span></label><input type="text" id="line_id" placeholder="line id" oninput="upd()"></div>
      <div><label>微信 ID <span class="opt">（可空）</span></label><input type="text" id="wechat_id" placeholder="wechat id" oninput="upd()"></div>
    </div>
-   <label>大頭貼</label>
+   <label>大頭貼 <span class="opt">（可不傳，沒傳就用你的「姓」當頭像）</span></label>
    <label class="filebtn" for="photo">📷 選擇照片（會自動裁成圓形頭像）</label>
    <input type="file" id="photo" accept="image/*" onchange="pickPhoto(this)">
  </div>
@@ -83,6 +83,17 @@ function pickPhoto(inp){
   };
   var fr=new FileReader(); fr.onload=function(e){img.src=e.target.result;}; fr.readAsDataURL(f);
 }
+function surnameAvatar(name){
+  var ch=((name||'').trim().charAt(0))||'阡';
+  var c=document.createElement('canvas'); c.width=520; c.height=520; var x=c.getContext('2d');
+  var g=x.createLinearGradient(0,0,520,520); g.addColorStop(0,'#2e86c1'); g.addColorStop(1,'#123a5c');
+  x.fillStyle=g; x.fillRect(0,0,520,520);
+  x.fillStyle='#ffffff'; x.textAlign='center'; x.textBaseline='middle';
+  x.font='bold 300px "PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif';
+  x.fillText(ch,260,290);
+  return c.toDataURL('image/jpeg',0.9);
+}
+function curPhoto(){ return photoData || surnameAvatar(document.getElementById('name_zh').value); }
 function upd(){
   document.getElementById('pv_name').textContent=val('name_zh')||'你的姓名';
   document.getElementById('pv_en').textContent=val('name_en');
@@ -90,13 +101,13 @@ function upd(){
   var parts=[]; if(val('mobile'))parts.push('手機 '+val('mobile')); if(val('email'))parts.push(val('email'));
   if(val('line_id'))parts.push('LINE @'+val('line_id')); if(val('wechat_id'))parts.push('微信 '+val('wechat_id'));
   document.getElementById('pv_ct').textContent=parts.join('  ·  ')||'手機 / Email / LINE 會顯示在這';
-  if(photoData) document.getElementById('pv_pic').style.backgroundImage="url('"+photoData+"')";
+  document.getElementById('pv_pic').style.backgroundImage="url('"+curPhoto()+"')";
 }
 function slugify(s){return (s||'').toLowerCase().replace(/[^a-z0-9]/g,'')||'staff';}
 function gen(){
   var e=document.getElementById('err'); e.style.display='none';
   var miss=[]; if(!val('name_zh'))miss.push('中文姓名'); if(!val('name_en'))miss.push('英文名');
-  if(!val('mobile'))miss.push('手機'); if(!val('email'))miss.push('Email'); if(!photoData)miss.push('大頭貼');
+  if(!val('mobile'))miss.push('手機'); if(!val('email'))miss.push('Email');
   if(miss.length){ e.textContent='還缺：'+miss.join('、'); e.style.display='block'; return; }
   document.getElementById('fn').textContent=slugify(val('name_en'))+'-名片資料.json';
   document.getElementById('after').style.display='block';
@@ -105,7 +116,8 @@ function gen(){
 function dl(){
   var data={ slug:slugify(val('name_en')), name_zh:val('name_zh'), name_en:val('name_en'),
     title:val('title'), mobile:val('mobile'), email:val('email'),
-    line_id:val('line_id'), wechat_id:val('wechat_id'), photo:photoData, _from:'card/new self-serve' };
+    line_id:val('line_id'), wechat_id:val('wechat_id'), photo:curPhoto(),
+    photo_is_surname:(!photoData), _from:'card/new self-serve' };
   var blob=new Blob([JSON.stringify(data)],{type:'application/json'});
   var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=data.slug+'-名片資料.json';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
