@@ -171,7 +171,7 @@
       </div>
       <h1 class="name">謝士廷<span class="en">Stin</span></h1>
       <div class="role"><b>經理</b><span class="bar"></span>阡傑企業有限公司</div>
-      <div class="tagline"><span class="hl">高雄工安設備供應商</span>　深耕在地 25 年</div>
+      <div class="tagline"><span class="hl">高雄工安設備供應商</span>　自 1999 年深耕在地</div>
     </section>
 
     <section class="sec">
@@ -241,12 +241,12 @@
       <div class="sec-h"><span>關於阡傑</span></div>
       <div class="about">
         <div class="yrs">
-          <span class="n">25<span style="font-size:16px;font-weight:700;color:#dfe9f2">年</span></span>
+          <span class="n"><span data-since="1999">27</span><span style="font-size:16px;font-weight:700;color:#dfe9f2">年</span></span>
           <span class="t"><b>阡傑企業有限公司</b>　自 1999 年成立<br>深耕高雄在地工業安全設備領域</span>
         </div>
         <div class="partners">
           <span class="ptag">BRADY 台灣官方授權經銷</span>
-          <span class="ptag"><span class="g">●</span> KSTRONG 合作夥伴</span>
+          <span class="ptag"><span class="g">●</span> KSTRONG 強力合作夥伴</span>
         </div>
         <p>專營工業安全設備供應與整合，服務製造業、營造業、石化廠、造船廠與半導體設備廠。從高空防墜、能源隔離到工業標示與溢漏防護，提供選型、報價、施工規劃與法規諮詢一站式服務，產品符合 CNS 國家標準與歐規 EN 認證。</p>
       </div>
@@ -352,7 +352,7 @@ document.querySelectorAll('[data-cp]').forEach(function(e){e.setAttribute('data-
   function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');showToast(ok);}catch(e){showToast('複製失敗');}document.body.removeChild(a);}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();copy(b.getAttribute('data-copy'),'已複製：'+b.getAttribute('data-copy'));});});
   document.getElementById('vcf').addEventListener('click',function(){
-    var v='BEGIN:VCARD\r\nVERSION:3.0\r\nN:謝;士廷;;;\r\nFN:謝士廷 (Stin)\r\nORG:阡傑企業有限公司\r\nTITLE:經理\r\nTEL;TYPE=CELL:'+atob('Kzg4Njk4MDg5Mzg4Nw==')+'\r\nTEL;TYPE=CELL:'+atob('Kzg4NjkxOTY2ODY4OA==')+'\r\nTEL;TYPE=WORK,VOICE:+88673735531\r\nTEL;TYPE=WORK,FAX:+88673746646\r\nEMAIL;TYPE=WORK:'+atob('c3RpbkBjaGlhbmp5ZS5jb20udHc=')+'\r\nURL:https://www.cjpro.com.tw\r\nADR;TYPE=WORK:;;仁武區仁信巷201弄68號;高雄市;;814;台灣\r\nNOTE:阡傑企業有限公司　BRADY 台灣授權經銷・KSTRONG 合作夥伴　統一編號 84335655　官方LINE @cjpro　WeChat：'+atob('c3RpbmhzaWVoX3dj')+'\r\nPHOTO;ENCODING=b;TYPE=JPEG:' + PHOTO + '\r\nEND:VCARD';
+    var v='BEGIN:VCARD\r\nVERSION:3.0\r\nN:謝;士廷;;;\r\nFN:謝士廷 (Stin)\r\nORG:阡傑企業有限公司\r\nTITLE:經理\r\nTEL;TYPE=CELL:'+atob('Kzg4Njk4MDg5Mzg4Nw==')+'\r\nTEL;TYPE=CELL:'+atob('Kzg4NjkxOTY2ODY4OA==')+'\r\nTEL;TYPE=WORK,VOICE:+88673735531\r\nTEL;TYPE=WORK,FAX:+88673746646\r\nEMAIL;TYPE=WORK:'+atob('c3RpbkBjaGlhbmp5ZS5jb20udHc=')+'\r\nURL:https://www.cjpro.com.tw\r\nADR;TYPE=WORK:;;仁武區仁信巷201弄68號;高雄市;;814;台灣\r\nNOTE:阡傑企業有限公司　BRADY 台灣授權經銷・KSTRONG 強力合作夥伴　統一編號 84335655　官方LINE @cjpro　WeChat：'+atob('c3RpbmhzaWVoX3dj')+'\r\nPHOTO;ENCODING=b;TYPE=JPEG:' + PHOTO + '\r\nEND:VCARD';
     var blob=new Blob([v],{type:'text/vcard;charset=utf-8'}); var url=URL.createObjectURL(blob);
     var a=document.createElement('a'); a.href=url; a.download='謝士廷_Stin_阡傑企業.vcf';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
@@ -360,5 +360,6 @@ document.querySelectorAll('[data-cp]').forEach(function(e){e.setAttribute('data-
     showToast('已下載電子名片，開啟即可加入通訊錄');
   });
 </script>
+<script>document.querySelectorAll("[data-since]").forEach(function(e){e.textContent=new Date().getFullYear()-parseInt(e.dataset.since,10)});</script>
 </body>
 </html>
