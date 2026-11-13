@@ -237,7 +237,7 @@
           <span class="t"><b>阡傑企業有限公司</b>　自 1994 年成立<br>深耕高雄在地工業安全設備領域</span>
         </div>
         <div class="partners">
-          <span class="ptag">BRADY 台灣官方授權經銷</span>
+          <span class="ptag">BRADY 台灣官方授權經銷商</span>
           <span class="ptag"><span class="g">●</span> KSTRONG 強力合作夥伴</span>
         </div>
         <p>專營工業安全設備供應與整合，服務製造業、營造業、石化廠、造船廠與半導體設備廠。從高空防墜、能源隔離到工業標示與溢漏防護，提供選型、報價、施工規劃與法規諮詢一站式服務，產品符合 CNS 國家標準與歐規 EN 認證。</p>
@@ -333,7 +333,7 @@ document.querySelectorAll('[data-cp]').forEach(function(e){e.setAttribute('data-
   function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');showToast(ok);}catch(e){showToast('複製失敗');}document.body.removeChild(a);}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();copy(b.getAttribute('data-copy'),'已複製：'+b.getAttribute('data-copy'));});});
   document.getElementById('vcf').addEventListener('click',function(){
-    var v='BEGIN:VCARD\r\nVERSION:3.0\r\nN:陳;曉倩;;;\r\nFN:陳曉倩 (Novia)\r\nORG:阡傑企業有限公司\r\nTITLE:督導\r\nTEL;TYPE=CELL:'+atob('Kzg4Njk3Mjg3ODk5MA==')+'\r\nTEL;TYPE=WORK,VOICE:+88673735531\r\nTEL;TYPE=WORK,FAX:+88673746646\r\nEMAIL;TYPE=WORK:'+atob('bm92aWFAY2hpYW5qeWUuY29tLnR3')+'\r\nURL:https://www.cjpro.com.tw\r\nADR;TYPE=WORK:;;仁武區仁信巷201弄68號;高雄市;;814;台灣\r\nNOTE:阡傑企業有限公司　BRADY 台灣授權經銷・KSTRONG 強力合作夥伴　統一編號 84335655　官方LINE @cjpro\r\nPHOTO;ENCODING=b;TYPE=JPEG:' + PHOTO + '\r\nEND:VCARD';
+    var v='BEGIN:VCARD\r\nVERSION:3.0\r\nN:陳;曉倩;;;\r\nFN:陳曉倩 (Novia)\r\nORG:阡傑企業有限公司\r\nTITLE:督導\r\nTEL;TYPE=CELL:'+atob('Kzg4Njk3Mjg3ODk5MA==')+'\r\nTEL;TYPE=WORK,VOICE:+88673735531\r\nTEL;TYPE=WORK,FAX:+88673746646\r\nEMAIL;TYPE=WORK:'+atob('bm92aWFAY2hpYW5qeWUuY29tLnR3')+'\r\nURL:https://www.cjpro.com.tw\r\nADR;TYPE=WORK:;;仁武區仁信巷201弄68號;高雄市;;814;台灣\r\nNOTE:阡傑企業有限公司　BRADY 台灣官方授權經銷商・KSTRONG 強力合作夥伴　統一編號 84335655　官方LINE @cjpro\r\nPHOTO;ENCODING=b;TYPE=JPEG:' + PHOTO + '\r\nEND:VCARD';
     var blob=new Blob([v],{type:'text/vcard;charset=utf-8'}); var url=URL.createObjectURL(blob);
     var a=document.createElement('a'); a.href=url; a.download='陳曉倩_Novia_阡傑企業.vcf';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
